@@ -8,10 +8,17 @@ Route::get('/', function () {
     return redirect('/login');
 })->name('home');
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('dashboard', function () {
-        return Inertia::render('dashboard');
-    })->name('dashboard');
+Route::middleware(['auth', 'role:guru'])->prefix('guru')->group(function () {
+    Route::get('/dashboard', function () {
+        return Inertia('guru/Dashboard');
+    })->name('guru.dashboard');
+});
+
+// Route untuk Siswa
+Route::middleware(['auth', 'role:siswa'])->prefix('siswa')->group(function () {
+    Route::get('/dashboard', function () {
+        return Inertia('siswa/Dashboard');
+    })->name('siswa.dashboard');
 });
 
 require __DIR__.'/settings.php';
