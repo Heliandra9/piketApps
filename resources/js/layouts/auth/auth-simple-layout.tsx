@@ -26,7 +26,7 @@ export default function AuthSimpleLayout({
                             className="flex flex-col items-center gap-2 font-medium"
                         >
                             <div className="mb-1 flex items-center justify-center rounded-md">
-                                <div className="h-24 w-21 inset-0 bg-[url('/logoSmk-removebg-preview.png')] bg-cover"></div>
+                                <div className="sm:h-24 sm:w-21 h-18 w-16 inset-0 bg-[url('/logoSmk-removebg-preview.png')] bg-cover"></div>
                             </div>
                             <span className="sr-only dark:text-white text-black">{title}</span>
                         </Link>
