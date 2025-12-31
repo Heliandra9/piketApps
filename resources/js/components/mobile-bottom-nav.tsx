@@ -1,4 +1,4 @@
-import { Home, Calendar, Users, Settings } from "lucide-react"
+import { Home, Calendar, Users, Settings, BookOpen } from "lucide-react"
 import { Link, usePage } from "@inertiajs/react"
 
 export function MobileBottomNav() {
@@ -20,10 +20,25 @@ export function MobileBottomNav() {
     };
   
   const navItems = [
-    { icon: Home, label: "Beranda", href: getDashboardRoute() },
-    { icon: Calendar, label: "Jadwal", href: "/jadwal" },
-    { icon: Users, label: "Murid", href: "/murid" },
-    { icon: Settings, label: "Profil", href: "/profil" },
+    { 
+      icon: Home,
+      label: "Beranda",
+      href: getDashboardRoute() 
+    },
+    ...(user?.role === 'guru' ? [
+            {
+                icon: BookOpen,
+                label: 'Jadwal',
+                href: '/guru/jadwal',
+            },
+        ] : []),
+        ...(user?.role === 'siswa' ? [
+            {
+                icon: BookOpen,
+                label: 'Mata Pelajaran',
+                href: '/siswa/subjects',
+            },
+        ] : []),
   ]
 
   const isActive = (href) => {
@@ -49,7 +64,7 @@ export function MobileBottomNav() {
               }`}
             >
               <div className={`p-2 rounded-full transition-colors ${
-                active ? "dark:bg-slate-500" : ""
+                active ? "dark:bg-slate-500 bg-black/50" : ""
               }`}>
                 <Icon className="w-5 h-5" />
               </div>

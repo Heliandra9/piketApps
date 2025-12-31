@@ -12,6 +12,9 @@ Route::middleware(['auth', 'role:guru'])->prefix('guru')->group(function () {
     Route::get('/dashboard', function () {
         return Inertia('guru/Dashboard');
     })->name('guru.dashboard');
+    Route::get('/jadwal', function () {
+        return Inertia('guru/Jadwal');
+    })->name('guru.jadwal');
 });
 
 // Route untuk Siswa

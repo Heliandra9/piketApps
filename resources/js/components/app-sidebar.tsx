@@ -4,6 +4,7 @@ import {
     Sidebar,
     SidebarContent,
     SidebarHeader,
+    SidebarFooter,
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
@@ -12,6 +13,8 @@ import { type NavItem } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
 import { BookOpen, Folder, House } from 'lucide-react';
 import AppLogo from './app-logo';
+import { NavUser } from '@/components/nav-user';
+
 
 export function AppSidebar() {
     // Ambil data user dari Inertia
@@ -69,6 +72,9 @@ export function AppSidebar() {
             <SidebarContent>
                 <NavMain items={mainNavItems} />
             </SidebarContent>
+            <SidebarFooter>
+                <NavUser/>
+            </SidebarFooter>
         </Sidebar>
     );
 }

@@ -71,8 +71,8 @@ export default function Dashboard() {
                             </Avatar>
                             <div className="flex flex-col">
                                 <p className="text-lg font-bold">Seseorang</p>
-                                <p className="text-slate-300">Kelas XII-RPL ~ Sudah Lapor</p>
-                                <p className="text-slate-400">10 menit yang lalu</p>
+                                <p className="text-slate-700 dark:text-slate-300">Kelas XII-RPL ~ Sudah Lapor</p>
+                                <p className="text-slate-800 dark:text-slate-400">10 menit yang lalu</p>
                             </div>
                         </div>
                     </div>
@@ -86,8 +86,8 @@ export default function Dashboard() {
                             </Avatar>
                             <div className="flex flex-col">
                                 <p className="text-lg font-bold">Seseorang</p>
-                                <p className="text-slate-300">Kelas XII-RPL ~ Sudah Lapor</p>
-                                <p className="text-slate-400">10 menit yang lalu</p>
+                                <p className="text-slate-700 dark:text-slate-300">Kelas XII-RPL ~ Sudah Lapor</p>
+                                <p className="text-slate-800 dark:text-slate-400">10 menit yang lalu</p>
                             </div>
                         </div>
                     </div>
@@ -101,8 +101,8 @@ export default function Dashboard() {
                             </Avatar>
                             <div className="flex flex-col">
                                 <p className="text-lg font-bold">Seseorang</p>
-                                <p className="text-slate-300">Kelas XII-RPL ~ Sudah Lapor</p>
-                                <p className="text-slate-400">10 menit yang lalu</p>
+                                <p className="text-slate-700 dark:text-slate-300">Kelas XII-RPL ~ Sudah Lapor</p>
+                                <p className="text-slate-800 dark:text-slate-400">10 menit yang lalu</p>
                             </div>
                         </div>
                     </div>

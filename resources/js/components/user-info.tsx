@@ -1,5 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useInitials } from '@/hooks/use-initials';
+import { useIsMobile } from '@/hooks/use-mobile';
 import { type User } from '@/types';
 
 export function UserInfo({
@@ -10,6 +11,7 @@ export function UserInfo({
     showEmail?: boolean;
 }) {
     const getInitials = useInitials();
+    const isMobile = useIsMobile();
 
     return (
         <>
@@ -20,9 +22,10 @@ export function UserInfo({
                 </AvatarFallback>
             </Avatar>
             <div className="grid flex-1 text-left text-sm leading-tight">
+                {!isMobile && (<span className="truncate font-medium">{user.name}</span>)}
                 {showEmail && (
                     <>
-                        <span className="truncate font-medium">{user.name}</span>
+                        {isMobile && (<span className="truncate font-medium">{user.name}</span>)}
                         <span className="truncate text-xs text-muted-foreground">
                             {user.email}
                         </span>
