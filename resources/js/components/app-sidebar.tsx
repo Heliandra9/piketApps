@@ -40,13 +40,13 @@ export function AppSidebar() {
             href: getDashboardRoute(),
             icon: House,
         },
-        // ...(user?.role === 'guru' ? [
-        //     {
-        //         title: 'Kelas Saya',
-        //         href: '/guru/classes',
-        //         icon: BookOpen,
-        //     },
-        // ] : []),
+        ...(user?.role === 'guru' ? [
+            {
+                title: 'Jadwal',
+                href: '/guru/jadwal',
+                icon: BookOpen,
+            },
+        ] : []),
         // ...(user?.role === 'siswa' ? [
         //     {
         //         title: 'Mata Pelajaran',
