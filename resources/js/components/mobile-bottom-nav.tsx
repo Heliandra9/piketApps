@@ -39,6 +39,11 @@ export function MobileBottomNav() {
                 href: '/siswa/subjects',
             },
         ] : []),
+    {
+      icon: Settings,
+      label: "Pengaturan",
+      href: '/settings/',
+    },
   ]
 
   const isActive = (href) => {
@@ -49,7 +54,7 @@ export function MobileBottomNav() {
   }
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-black border-t border-gray-200 md:hidden shadow-lg">
+    <nav className="fixed bottom-0 left-2 right-2 z-50 bg-white rounded-t-lg dark:bg-black border-t border-sidebar-border/50 md:hidden shadow-md shadow-black dark:shadow">
       <div className="flex items-center justify-around h-16">
         {navItems.map((item) => {
           const Icon = item.icon
