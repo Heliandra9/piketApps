@@ -12,6 +12,9 @@ Route::middleware(['auth', 'role:guru'])->prefix('guru')->group(function () {
     Route::get('/dashboard', function () {
         return Inertia('guru/Dashboard');
     })->name('guru.dashboard');
+    Route::get('/dashboard/laporan_piket', function () {
+        return Inertia('guru/dashboard/LihatLaporanUi');
+    })->name('guru.laporan_piket');
     Route::get('/jadwal', function () {
         return Inertia('guru/Jadwal');
     })->name('guru.jadwal');
