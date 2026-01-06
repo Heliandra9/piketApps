@@ -3,6 +3,7 @@ import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Head } from '@inertiajs/react';
 import { DropdownMenuRadio } from '@/components/dropdown-menu-radio';
+import { DialogForm } from '@/components/dialog-form';
 import { useState } from 'react';
 
 
@@ -28,165 +29,23 @@ export default function Jadwal() {
                         </div>
                     </div>
                 </div>
+                <DialogForm
+                    title="Tambah Kelas"
+                    description="Silahkan isi formulir dibawah ini untuk menambahkan kelas baru."
+                    form="kelas"
+                    type="post"
+                />
                 {selectedkelas ? (
                     <>
-                        <h1 className="font-bold text-lg">Senin</h1>
-                            <div className="grid grid-cols-3 sm:grid-cols-6 gap-4">
-                                <div className="flex flex-col items-center justify-center p-4 gap-2 rounded-lg dark:bg-white/10 bg-black-50 border border-sidebar-border shadow">
-                                    <div className="border-b border-sidebar-border">
-                                        <img className="bg-cover size-14 sm:size-24" src={'/logoSmk-removebg-preview.png'} alt="seseorang"/>  
-                                    </div>
-                                    <p className="line-clamp-2 text-lg w-24 text-center">Sesorang</p>
-                                </div>
-                                <div className="flex flex-col items-center justify-center p-4 gap-2 rounded-lg dark:bg-white/10 bg-black-50 border border-sidebar-border shadow">
-                                    <div className="border-b border-sidebar-border">
-                                        <img className="bg-cover size-14 sm:size-24" src={'/logoSmk-removebg-preview.png'} alt="seseorang"/>  
-                                    </div>
-                                    <p className="line-clamp-2 text-lg w-24 text-center">Sesorang</p>
-                                </div>
-                                <div className="flex flex-col items-center justify-center p-4 gap-2 rounded-lg dark:bg-white/10 bg-black-50 border border-sidebar-border shadow">
-                                    <div className="border-b border-sidebar-border">
-                                        <img className="bg-cover size-14 sm:size-24" src={'/logoSmk-removebg-preview.png'} alt="seseorang"/>  
-                                    </div>
-                                    <p className="line-clamp-2 text-lg w-24 text-center">Sesorang</p>
-                                </div>
-                                <div className="flex flex-col items-center justify-center p-4 gap-2 rounded-lg dark:bg-white/10 bg-black-50 border border-sidebar-border shadow">
-                                    <div className="border-b border-sidebar-border">
-                                        <img className="bg-cover size-14 sm:size-24" src={'/logoSmk-removebg-preview.png'} alt="seseorang"/>  
-                                    </div>
-                                    <p className="line-clamp-2 text-lg w-24 text-center">Sesorang</p>
-                                </div>
-                                <div className="flex flex-col items-center justify-center p-4 gap-2 rounded-lg dark:bg-white/10 bg-black-50 border border-sidebar-border shadow">
-                                    <div className="border-b border-sidebar-border">
-                                        <img className="bg-cover size-14 sm:size-24" src={'/logoSmk-removebg-preview.png'} alt="seseorang"/>  
-                                    </div>
-                                    <p className="line-clamp-2 text-lg w-24 text-center">Sesorang</p>
-                                </div>
-                                <div className="flex flex-col items-center justify-center p-4 gap-2 rounded-lg dark:bg-white/10 bg-black-50 border border-sidebar-border shadow">
-                                    <div className="border-b border-sidebar-border">
-                                        <img className="bg-cover size-14 sm:size-24" src={'/logoSmk-removebg-preview.png'} alt="seseorang"/>  
-                                    </div>
-                                    <p className="line-clamp-2 text-lg w-24 text-center">Sesorang</p>
-                                </div>
-                            </div>
-                            <h1 className="font-bold text-lg">Selasa</h1>
-                            <div className="grid grid-cols-3 sm:grid-cols-6 gap-4">
-                                <div className="flex flex-col items-center justify-center p-4 gap-2 rounded-lg dark:bg-white/10 bg-black-50 border border-sidebar-border shadow">
-                                    <div className="border-b border-sidebar-border">
-                                        <img className="bg-cover size-14 sm:size-24" src={'/logoSmk-removebg-preview.png'} alt="seseorang"/>  
-                                    </div>
-                                    <p className="line-clamp-2 text-lg w-24 text-center">Sesorang</p>
-                                </div>
-                                <div className="flex flex-col items-center justify-center p-4 gap-2 rounded-lg dark:bg-white/10 bg-black-50 border border-sidebar-border shadow">
-                                    <div className="border-b border-sidebar-border">
-                                        <img className="bg-cover size-14 sm:size-24" src={'/logoSmk-removebg-preview.png'} alt="seseorang"/>  
-                                    </div>
-                                    <p className="line-clamp-2 text-lg w-24 text-center">Sesorang</p>
-                                </div>
-                                <div className="flex flex-col items-center justify-center p-4 gap-2 rounded-lg dark:bg-white/10 bg-black-50 border border-sidebar-border shadow">
-                                    <div className="border-b border-sidebar-border">
-                                        <img className="bg-cover size-14 sm:size-24" src={'/logoSmk-removebg-preview.png'} alt="seseorang"/>  
-                                    </div>
-                                    <p className="line-clamp-2 text-lg w-24 text-center">Sesorang</p>
-                                </div>
-                                <div className="flex flex-col items-center justify-center p-4 gap-2 rounded-lg dark:bg-white/10 bg-black-50 border border-sidebar-border shadow">
-                                    <div className="border-b border-sidebar-border">
-                                        <img className="bg-cover size-14 sm:size-24" src={'/logoSmk-removebg-preview.png'} alt="seseorang"/>  
-                                    </div>
-                                    <p className="line-clamp-2 text-lg w-24 text-center">Sesorang</p>
-                                </div>
-                                <div className="flex flex-col items-center justify-center p-4 gap-2 rounded-lg dark:bg-white/10 bg-black-50 border border-sidebar-border shadow">
-                                    <div className="border-b border-sidebar-border">
-                                        <img className="bg-cover size-14 sm:size-24" src={'/logoSmk-removebg-preview.png'} alt="seseorang"/>  
-                                    </div>
-                                    <p className="line-clamp-2 text-lg w-24 text-center">Sesorang</p>
-                                </div>
-                                <div className="flex flex-col items-center justify-center p-4 gap-2 rounded-lg dark:bg-white/10 bg-black-50 border border-sidebar-border shadow">
-                                    <div className="border-b border-sidebar-border">
-                                        <img className="bg-cover size-14 sm:size-24" src={'/logoSmk-removebg-preview.png'} alt="seseorang"/>  
-                                    </div>
-                                    <p className="line-clamp-2 text-lg w-24 text-center">Sesorang</p>
-                                </div>
-                            </div>
-                            <h1 className="font-bold text-lg">Rabu</h1>
-                            <div className="grid grid-cols-3 sm:grid-cols-6 gap-4">
-                                <div className="flex flex-col items-center justify-center p-4 gap-2 rounded-lg dark:bg-white/10 bg-black-50 border border-sidebar-border shadow">
-                                    <div className="border-b border-sidebar-border">
-                                        <img className="bg-cover size-14 sm:size-24" src={'/logoSmk-removebg-preview.png'} alt="seseorang"/>  
-                                    </div>
-                                    <p className="line-clamp-2 text-lg w-24 text-center">Sesorang</p>
-                                </div>
-                                <div className="flex flex-col items-center justify-center p-4 gap-2 rounded-lg dark:bg-white/10 bg-black-50 border border-sidebar-border shadow">
-                                    <div className="border-b border-sidebar-border">
-                                        <img className="bg-cover size-14 sm:size-24" src={'/logoSmk-removebg-preview.png'} alt="seseorang"/>  
-                                    </div>
-                                    <p className="line-clamp-2 text-lg w-24 text-center">Sesorang</p>
-                                </div>
-                                <div className="flex flex-col items-center justify-center p-4 gap-2 rounded-lg dark:bg-white/10 bg-black-50 border border-sidebar-border shadow">
-                                    <div className="border-b border-sidebar-border">
-                                        <img className="bg-cover size-14 sm:size-24" src={'/logoSmk-removebg-preview.png'} alt="seseorang"/>  
-                                    </div>
-                                    <p className="line-clamp-2 text-lg w-24 text-center">Sesorang</p>
-                                </div>
-                                <div className="flex flex-col items-center justify-center p-4 gap-2 rounded-lg dark:bg-white/10 bg-black-50 border border-sidebar-border shadow">
-                                    <div className="border-b border-sidebar-border">
-                                        <img className="bg-cover size-14 sm:size-24" src={'/logoSmk-removebg-preview.png'} alt="seseorang"/>  
-                                    </div>
-                                    <p className="line-clamp-2 text-lg w-24 text-center">Sesorang</p>
-                                </div>
-                                <div className="flex flex-col items-center justify-center p-4 gap-2 rounded-lg dark:bg-white/10 bg-black-50 border border-sidebar-border shadow">
-                                    <div className="border-b border-sidebar-border">
-                                        <img className="bg-cover size-14 sm:size-24" src={'/logoSmk-removebg-preview.png'} alt="seseorang"/>  
-                                    </div>
-                                    <p className="line-clamp-2 text-lg w-24 text-center">Sesorang</p>
-                                </div>
-                                <div className="flex flex-col items-center justify-center p-4 gap-2 rounded-lg dark:bg-white/10 bg-black-50 border border-sidebar-border shadow">
-                                    <div className="border-b border-sidebar-border">
-                                        <img className="bg-cover size-14 sm:size-24" src={'/logoSmk-removebg-preview.png'} alt="seseorang"/>  
-                                    </div>
-                                    <p className="line-clamp-2 text-lg w-24 text-center">Sesorang</p>
-                                </div>
-                            </div>
-                            <h1 className="font-bold text-lg">Kamis</h1>
-                            <div className="grid grid-cols-3 sm:grid-cols-6 gap-4">
-                                <div className="flex flex-col items-center justify-center p-4 gap-2 rounded-lg dark:bg-white/10 bg-black-50 border border-sidebar-border shadow">
-                                    <div className="border-b border-sidebar-border">
-                                        <img className="bg-cover size-14 sm:size-24" src={'/logoSmk-removebg-preview.png'} alt="seseorang"/>  
-                                    </div>
-                                    <p className="line-clamp-2 text-lg w-24 text-center">Sesorang</p>
-                                </div>
-                                <div className="flex flex-col items-center justify-center p-4 gap-2 rounded-lg dark:bg-white/10 bg-black-50 border border-sidebar-border shadow">
-                                    <div className="border-b border-sidebar-border">
-                                        <img className="bg-cover size-14 sm:size-24" src={'/logoSmk-removebg-preview.png'} alt="seseorang"/>  
-                                    </div>
-                                    <p className="line-clamp-2 text-lg w-24 text-center">Sesorang</p>
-                                </div>
-                                <div className="flex flex-col items-center justify-center p-4 gap-2 rounded-lg dark:bg-white/10 bg-black-50 border border-sidebar-border shadow">
-                                    <div className="border-b border-sidebar-border">
-                                        <img className="bg-cover size-14 sm:size-24" src={'/logoSmk-removebg-preview.png'} alt="seseorang"/>  
-                                    </div>
-                                    <p className="line-clamp-2 text-lg w-24 text-center">Sesorang</p>
-                                </div>
-                                <div className="flex flex-col items-center justify-center p-4 gap-2 rounded-lg dark:bg-white/10 bg-black-50 border border-sidebar-border shadow">
-                                    <div className="border-b border-sidebar-border">
-                                        <img className="bg-cover size-14 sm:size-24" src={'/logoSmk-removebg-preview.png'} alt="seseorang"/>  
-                                    </div>
-                                    <p className="line-clamp-2 text-lg w-24 text-center">Sesorang</p>
-                                </div>
-                                <div className="flex flex-col items-center justify-center p-4 gap-2 rounded-lg dark:bg-white/10 bg-black-50 border border-sidebar-border shadow">
-                                    <div className="border-b border-sidebar-border">
-                                        <img className="bg-cover size-14 sm:size-24" src={'/logoSmk-removebg-preview.png'} alt="seseorang"/>  
-                                    </div>
-                                    <p className="line-clamp-2 text-lg w-24 text-center">Sesorang</p>
-                                </div>
-                                <div className="flex flex-col items-center justify-center p-4 gap-2 rounded-lg dark:bg-white/10 bg-black-50 border border-sidebar-border shadow">
-                                    <div className="border-b border-sidebar-border">
-                                        <img className="bg-cover size-14 sm:size-24" src={'/logoSmk-removebg-preview.png'} alt="seseorang"/>  
-                                    </div>
-                                    <p className="line-clamp-2 text-lg w-24 text-center">Sesorang</p>
-                                </div>
-                            </div>
-                            <h1 className="font-bold text-lg">Jumat</h1>
+                        <div className="flex justify-between">
+                            <h1 className="font-bold text-lg">Senin</h1>
+                            <DialogForm
+                                title="Tambah siswa"
+                                description="Silahkan isi formulir di bawah ini untuk menambahkan data siswa."
+                                type="post"
+                                form="siswa"
+                            />
+                        </div>
                             <div className="grid grid-cols-3 sm:grid-cols-6 gap-4">
                                 <div className="flex flex-col items-center justify-center p-4 gap-2 rounded-lg dark:bg-white/10 bg-black-50 border border-sidebar-border shadow">
                                     <div className="border-b border-sidebar-border">
