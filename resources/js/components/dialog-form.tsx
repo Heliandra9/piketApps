@@ -69,9 +69,9 @@ export function DialogForm({ type, description, title, form }: DialogProps) {
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader className="text-left">
-          <DrawerTitle>Edit profile</DrawerTitle>
+          <DrawerTitle>{title}</DrawerTitle>
           <DrawerDescription>
-            Make changes to your profile here. Click save when you&apos;re done.
+            {description}
           </DrawerDescription>
         </DrawerHeader>
         {form === "kelas" ? (
@@ -93,21 +93,8 @@ function FormKelas({ className }: React.ComponentProps<"form">) {
   return(
   		<form className={cn("grid items-start gap-6", className)}>
           <div className="grid gap-3">
-            <Label htmlFor="kelas">Kelas</Label>
-            <Select>
-			  <SelectTrigger className="w-full">
-			    <SelectValue placeholder="Kelas" />
-			  </SelectTrigger>
-			  <SelectContent>
-			    <SelectItem value="X">X</SelectItem>
-			    <SelectItem value="XI">XI</SelectItem>
-			    <SelectItem value="XII">XII</SelectItem>
-			  </SelectContent>
-			</Select>
-          </div>
-          <div className="grid gap-3">
-            <Label htmlFor="jurusan">Jurusan</Label>
-            <Input id="jurusan" defaultValue="RPL" />
+            <Label htmlFor="kelas">Jurusan</Label>
+            <Input id="kelas" placeholder="Contoh: X-RPL 1, XI-RPL 1, XII-RPL 1" />
           </div>
           <Button type="submit">Save changes</Button>
         </form>
