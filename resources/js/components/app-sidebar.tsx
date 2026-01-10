@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/sidebar';
 import { type NavItem } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
-import { BookOpen, Folder, House } from 'lucide-react';
+import { BookOpen, Folder, House, AlignEndHorizontal } from 'lucide-react';
 import AppLogo from './app-logo';
 import { NavUser } from '@/components/nav-user';
 
@@ -45,6 +45,11 @@ export function AppSidebar() {
                 title: 'Jadwal',
                 href: '/guru/jadwal',
                 icon: BookOpen,
+            },
+            {
+                icon: AlignEndHorizontal,
+                title: 'Detail Laporan',
+                href: '/guru/laporan_piket',
             },
         ] : []),
         // ...(user?.role === 'siswa' ? [

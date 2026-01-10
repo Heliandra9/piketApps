@@ -44,22 +44,6 @@ export default function Dashboard() {
                             </div>
                         </div>
                     </div>
-                    <h1 className="text-lg dark:text-white text-black font-bold">Aksi Cepat</h1>
-                    <div className="grid grid-cols-2 gap-4">
-                        <a href="/guru/dashboard/laporan_piket" className="relative dark:text-white active:dark:bg-white/70 active:bg-gray-100 hover:cursor-pointer text-black justify-center p-4 items-center flex flex-col rounded-xl border border-sidebar-border/70 hover:scale-105 dark:hover:bg-white/70 transition-all dark:bg-white/10 bg-gray-50 hover:bg-gray-100 dark:border-sidebar-border">
-                            <div className="flex flex-col items-center gap-2">                            
-                                
-                                <BookOpenText size="35"/>
-                                <p className="text-lg font-bold">Lihat laporan</p>
-                            </div>
-                        </a>
-                        <div className="relative dark:text-white active:dark:bg-white/70 active:bg-gray-100 hover:cursor-pointer text-black justify-center p-4 items-center flex flex-col rounded-xl border border-sidebar-border/70 hover:scale-105 dark:hover:bg-white/70 transition-all dark:bg-white/10 bg-gray-50 hover:bg-gray-100 dark:border-sidebar-border">
-                            <div className="flex flex-col items-center gap-2">                            
-                                <ChartColumn size="35"/>
-                                <p className="text-lg font-bold">Riwayat Piket</p>
-                            </div>
-                        </div>
-                    </div>
                     <h1 className="text-lg dark:text-white text-black font-bold">Laporan Terbaru</h1>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         <div className="relative dark:text-white active:dark:bg-white/70 active:bg-gray-100 hover:cursor-pointer text-black p-4 justify-center flex flex-col rounded-xl border border-sidebar-border/70 hover:scale-105 dark:hover:bg-white/70 transition-all dark:bg-white/10 bg-gray-50 hover:bg-gray-100 dark:border-sidebar-border">

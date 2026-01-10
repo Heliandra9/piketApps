@@ -7,6 +7,7 @@ import { DialogForm } from '@/components/dialog-form';
 import { useState } from 'react';
 
 
+
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Jadwal Piket',
@@ -19,7 +20,7 @@ export default function Jadwal() {
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <Head title="Beranda" />
+            <Head title="Jadwal" />
             <div className="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4">
                 <div className="relative dark:text-white text-black p-4 justify-center flex flex-col rounded-xl border border-sidebar-border/70 transition-all dark:bg-white/10 bg-gray-50 dark:border-sidebar-border">
                     <div className="flex justify-center items-center gap-2">                            

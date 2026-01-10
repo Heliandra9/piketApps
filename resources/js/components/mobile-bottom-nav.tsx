@@ -1,4 +1,4 @@
-import { Home, Calendar, Users, Settings, BookOpen } from "lucide-react"
+import { Home, Calendar, Users, Settings, BookOpen, AlignEndHorizontal } from "lucide-react"
 import { Link, usePage } from "@inertiajs/react"
 
 export function MobileBottomNav() {
@@ -30,6 +30,11 @@ export function MobileBottomNav() {
                 icon: BookOpen,
                 label: 'Jadwal',
                 href: '/guru/jadwal',
+            },
+            {
+                icon: AlignEndHorizontal,
+                label: 'Detail Laporan',
+                href: '/guru/laporan_piket',
             },
         ] : []),
         ...(user?.role === 'siswa' ? [

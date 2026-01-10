@@ -2,6 +2,8 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 import { useMediaQuery } from "@/hooks/use-media-query"
 import { Button } from "@/components/ui/button"
+import TextLink from '@/components/text-link';
+import { motion, AnimatePresence } from "framer-motion"
 import {
   Select,
   SelectContent,
@@ -47,7 +49,7 @@ export function DialogForm({ type, description, title, form }: DialogProps) {
         <DialogTrigger asChild>
           <Button variant="default">{title}</Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="sm:max-w-[425px] transition-all h-fit">
           <DialogHeader>
             <DialogTitle>{title}</DialogTitle>
             <DialogDescription>{description}</DialogDescription>
@@ -67,7 +69,7 @@ export function DialogForm({ type, description, title, form }: DialogProps) {
       <DrawerTrigger asChild>
         <Button variant="default">{title}</Button>
       </DrawerTrigger>
-      <DrawerContent>
+      <DrawerContent className="transition-all h-fit">
         <DrawerHeader className="text-left">
           <DrawerTitle>{title}</DrawerTitle>
           <DrawerDescription>
@@ -102,22 +104,75 @@ function FormKelas({ className }: React.ComponentProps<"form">) {
 }
 
 function FormSiswa({ className }: React.ComponentProps<"form">) {
-  return(
-  		<form className={cn("grid items-start gap-6", className)}>
-          <div className="grid gap-3">
-            <Label htmlFor="kelas">Nama</Label>
+
+  const [show, setShow] = React.useState(false)
+
+  return (
+    <form className={cn("grid items-start gap-6", className)}>
+      <AnimatePresence mode="wait">
+        {show ? (
+          <motion.div
+            key="create"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.35, ease: "easeInOut" }}
+            className="overflow-hidden grid gap-3"
+          >
+            <div className="text-end text-sm">
+              <button
+                type="button"
+                onClick={() => setShow(false)}
+                className="underline"
+              >
+                {`<`} Kembali
+              </button>
+            </div>
+
+            <div className="grid gap-3">
+              <Label htmlFor="email">Email</Label>
+              <Input id="email" />
+            </div>
+
+            <div className="grid gap-3">
+              <Label htmlFor="username">Username</Label>
+              <Input id="username" />
+            </div>
+          </motion.div>
+        ) : (
+          <motion.div
+            key="select"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.35, ease: "easeInOut" }}
+            className="overflow-hidden grid gap-3"
+          >
+            <Label>Nama</Label>
             <Select>
-			  <SelectTrigger className="w-full">
-			    <SelectValue placeholder="Nama" />
-			  </SelectTrigger>
-			  <SelectContent>
-			    <SelectItem value="Siswa1">Siswa1</SelectItem>
-			    <SelectItem value="Siswa2">Siswa2</SelectItem>
-			    <SelectItem value="Siswa3">Siswa3</SelectItem>
-			  </SelectContent>
-			</Select>
-          </div>
-          <Button type="submit">Save changes</Button>
-        </form>
-  	);
+              <SelectTrigger>
+                <SelectValue placeholder="Nama" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="Siswa1">Siswa1</SelectItem>
+                <SelectItem value="Siswa2">Siswa2</SelectItem>
+              </SelectContent>
+            </Select>
+
+            <div className="text-center text-sm">
+              Tidak menemukan data siswa?{" "}
+              <button
+                type="button"
+                onClick={() => setShow(true)}
+                className="underline"
+              >
+                Buat akun
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <Button type="submit">Save changes</Button>
+    </form>
+  )
 }
