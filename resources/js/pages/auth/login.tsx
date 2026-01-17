@@ -13,8 +13,6 @@ import { Form, Head } from '@inertiajs/react';
 
 interface LoginProps {
     status?: string;
-    canResetPassword: boolean;
-    canRegister: boolean;
 }
 
 export default function Login({
@@ -38,16 +36,16 @@ export default function Login({
                     <>
                         <div className="grid gap-6">
                             <div className="grid gap-2">
-                                <Label htmlFor="email">Email address</Label>
+                                <Label htmlFor="username">Username</Label>
                                 <Input
-                                    id="email"
-                                    type="email"
-                                    name="email"
+                                    id="username"
+                                    type="text"
+                                    name="username"
                                     required
                                     autoFocus
                                     tabIndex={1}
-                                    autoComplete="email"
-                                    placeholder="email@example.com"
+                                    autoComplete="username"
+                                    placeholder="Your username"
                                 />
                                 <InputError message={errors.email} />
                             </div>
@@ -55,15 +53,6 @@ export default function Login({
                             <div className="grid gap-2">
                                 <div className="flex items-center">
                                     <Label htmlFor="password">Password</Label>
-                                    {canResetPassword && (
-                                        <TextLink
-                                            href={request()}
-                                            className="ml-auto text-sm"
-                                            tabIndex={5}
-                                        >
-                                            Forgot password?
-                                        </TextLink>
-                                    )}
                                 </div>
                                 <Input
                                     id="password"
@@ -97,15 +86,6 @@ export default function Login({
                                 Log in
                             </Button>
                         </div>
-
-                        {canRegister && (
-                            <div className="text-center text-sm text-black dark:text-white">
-                                Don't have an account?{' '}
-                                <TextLink href={register()} tabIndex={5}>
-                                    Sign up
-                                </TextLink>
-                            </div>
-                        )}
                     </>
                 )}
             </Form>
