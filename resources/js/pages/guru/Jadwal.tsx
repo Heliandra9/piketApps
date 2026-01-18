@@ -6,7 +6,10 @@ import { DropdownMenuRadio } from '@/components/dropdown-menu-radio';
 import { DialogForm } from '@/components/dialog-form';
 import { useState } from 'react';
 
-
+type Kelas = {
+    id: number
+    nama_kelas: string
+}
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -14,7 +17,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-export default function Jadwal() {
+export default function Jadwal({ kelas }: {kelas: Kelas[]}) {
 
     const [selectedkelas, setSelectedKelas] = useState<string | null>(null);
 
@@ -26,7 +29,7 @@ export default function Jadwal() {
                     <div className="flex justify-center items-center gap-2">                            
                         <div className="flex flex-col items-center justify-center">
                             <p className="text-slate-700 dark:text-slate-300">Pilih Kelas</p>
-                            <DropdownMenuRadio onChange={setSelectedKelas}/>
+                            <DropdownMenuRadio kelas={kelas} onChange={setSelectedKelas}/>
                         </div>
                     </div>
                 </div>

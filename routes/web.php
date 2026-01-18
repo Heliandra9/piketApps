@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
+use App\Http\Controllers\KelasController;
 
 Route::get('/', function () {
     return redirect('/login');
@@ -15,10 +16,12 @@ Route::middleware(['auth', 'role:guru'])->prefix('guru')->group(function () {
     Route::get('/laporan_piket', function () {
         return Inertia('guru/LihatLaporanUi');
     })->name('guru.laporan_piket');
-    Route::get('/jadwal', function () {
-        return Inertia('guru/Jadwal');
-    })->name('guru.jadwal');
+    Route::get('/jadwal', [KelasController::class, 'index'])
+    ->name('guru.jadwal');
 });
+
+Route::post('/kelas', [KelasController::class, 'store'])
+    ->middleware(['auth']);
 
 // Route untuk Siswa
 Route::middleware(['auth', 'role:siswa'])->prefix('siswa')->group(function () {

@@ -31,6 +31,7 @@ import {
 } from "@/components/ui/drawer"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { useForm } from "@inertiajs/react"
 
 type DialogProps = {
 	title: string,
@@ -91,16 +92,40 @@ export function DialogForm({ type, description, title, form }: DialogProps) {
   )
 }
 
+
 function FormKelas({ className }: React.ComponentProps<"form">) {
-  return(
-  		<form className={cn("grid items-start gap-6", className)}>
-          <div className="grid gap-3">
-            <Label htmlFor="kelas">Jurusan</Label>
-            <Input id="kelas" placeholder="Contoh: X-RPL 1, XI-RPL 1, XII-RPL 1" />
-          </div>
-          <Button type="submit">Save changes</Button>
-        </form>
-  	);
+  const { data, setData, post, processing, errors } = useForm({
+    nama_kelas: "",
+  })
+
+  const submit = (e: React.FormEvent) => {
+    e.preventDefault()
+    post("/kelas")
+  }
+
+  return (
+    <form
+      onSubmit={submit}
+      className={cn("grid items-start gap-6", className)}
+    >
+      <div className="grid gap-3">
+        <Label htmlFor="kelas">Jurusan</Label>
+        <Input
+          id="kelas"
+          value={data.nama_kelas}
+          onChange={(e) => setData("nama_kelas", e.target.value)}
+          placeholder="Contoh: X-RPL 1"
+        />
+        {errors.nama_kelas && (
+          <p className="text-sm text-red-500">{errors.nama_kelas}</p>
+        )}
+      </div>
+
+      <Button type="submit" disabled={processing}>
+        {processing ? "Saving..." : "Save changes"}
+      </Button>
+    </form>
+  )
 }
 
 function FormSiswa({ className }: React.ComponentProps<"form">) {

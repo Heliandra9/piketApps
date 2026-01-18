@@ -50,8 +50,8 @@ class User extends Authenticatable
         ];
     }
 
-    public function kelas()
+    public function siswa()
     {
-        return $this->belongsTo(Kelas::class);
+        return $this->belongsTo(Siswa::class);
     }
 }

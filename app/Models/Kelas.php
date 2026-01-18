@@ -10,8 +10,8 @@ class Kelas extends Model
         'nama_kelas'
     ];
 
-    public function users()
+    public function siswa()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(Siswa::class);
     }
 }

@@ -11,14 +11,15 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 type DropdownMenuRadioProps = {
+  kelas: []
   onChange: (value: string) => void
 }
 
-export function DropdownMenuRadio({ onChange }: DropdownMenuRadioProps) {
-  const [kelas, setKelas] = React.useState("")
+export function DropdownMenuRadio({ kelas, onChange }: DropdownMenuRadioProps) {
+  const [kelasValue, setKelasValue] = React.useState("")
 
   const handleChange = (value: string) => {
-    setKelas(value)
+    setKelasValue(value)
     onChange(value)
   }
 
@@ -27,21 +28,21 @@ export function DropdownMenuRadio({ onChange }: DropdownMenuRadioProps) {
       <DropdownMenuTrigger asChild>
         <Button
           className={`bg-transparent transition-all hover:cursor-pointer hover:scale-105 text-lg ${
-            kelas === "" && "text-slate-500"
+            kelasValue === "" && "text-slate-500"
           }`}
           variant="none"
         >
-          {!kelas ? "Klik Disini" : kelas}
+          {!kelasValue ? "Klik Disini" : kelasValue}
         </Button>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>Pilih Kelas</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuRadioGroup value={kelas} onValueChange={handleChange}>
-          <DropdownMenuRadioItem value="XII-RPL">XII-RPL</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="XII-TJKT 1">XII-TJKT 1</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="XII-TJKT 2">XII-TJKT 2</DropdownMenuRadioItem>
+        <DropdownMenuRadioGroup value={kelasValue} onValueChange={handleChange}>
+          {kelas.map(item=>(
+            <DropdownMenuRadioItem value={item.nama_kelas}>{item.nama_kelas}</DropdownMenuRadioItem>
+            ))}
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>
     </DropdownMenu>
