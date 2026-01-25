@@ -8,13 +8,6 @@ use Inertia\Inertia;
 
 class KelasController extends Controller
 {
-    public function index()
-    {
-        return Inertia::render('guru/Jadwal', [
-            'kelas' => Kelas::orderBy('nama_kelas')->get(),
-        ]);
-    }
-
     public function store(Request $request)
     {
         $validated = $request->validate([

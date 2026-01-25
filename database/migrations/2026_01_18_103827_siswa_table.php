@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('siswa', function (Blueprint $table) {
             $table->increments('id');
             $table->string('hari_piket');
-            $table->string('total_piket');
-            $table->string('total_tidak_piket');
+            $table->string('total_piket')->nullable();
+            $table->string('total_tidak_piket')->nullable();
             $table->timestamps();
         });
     }

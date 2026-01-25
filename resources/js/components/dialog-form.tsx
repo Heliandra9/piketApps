@@ -34,13 +34,23 @@ import { Label } from "@/components/ui/label"
 import { useForm } from "@inertiajs/react"
 
 type DialogProps = {
-	title: string,
-	description: string,
+	title: string;
+	description: string;
 	form?: 'kelas' | 'siswa' | 'guru';
-    type?: 'post' | 'put' | 'delete';
+  type?: 'post' | 'put' | 'delete';
+  piket?: 'senin' | 'selasa' | 'rabu' | 'kamis' | 'jumat';
+  siswa: [];
+  kelas: string;
 }
 
-export function DialogForm({ type, description, title, form }: DialogProps) {
+type FormProps = React.ComponentProps<"form"> & {
+  onSuccessClose?: () => void;
+  piket: string;
+  siswa: [];
+  kelas: string;
+}
+
+export function DialogForm({ type, description, title, form, piket, siswa, kelas }: DialogProps) {
   const [open, setOpen] = React.useState(false)
   const isDesktop = useMediaQuery("(min-width: 768px)")
 
@@ -56,10 +66,10 @@ export function DialogForm({ type, description, title, form }: DialogProps) {
             <DialogDescription>{description}</DialogDescription>
           </DialogHeader>
           {form === 'kelas' ? (
-          	<FormKelas/>
-          	):form === 'siswa' && (
-          	<FormSiswa/>
-          	)}
+            <FormKelas onSuccessClose={() => setOpen(false)} />
+          ) : form === 'siswa' && (
+            <FormSiswa siswa={siswa} piket={piket} kelas={kelas} onSuccessClose={() => setOpen(false)} />
+          )}
         </DialogContent>
       </Dialog>
     )
@@ -77,11 +87,11 @@ export function DialogForm({ type, description, title, form }: DialogProps) {
             {description}
           </DrawerDescription>
         </DrawerHeader>
-        {form === "kelas" ? (
-        	<FormKelas className="px-4" />
-        	):form === 'siswa' && (
-          	<FormSiswa className="px-4"/>
-          	)}
+        {form === 'kelas' ? (
+          <FormKelas onSuccessClose={() => setOpen(false)} className="px-4"/>
+        ) : form === 'siswa' && (
+          <FormSiswa siswa={siswa} piket={piket} onSuccessClose={() => setOpen(false)} className="px-4"/>
+        )}
         <DrawerFooter className="pt-2">
           <DrawerClose asChild>
             <Button variant="outline">Cancel</Button>
@@ -93,14 +103,18 @@ export function DialogForm({ type, description, title, form }: DialogProps) {
 }
 
 
-function FormKelas({ className }: React.ComponentProps<"form">) {
+function FormKelas({ className, onSuccessClose }: FormProps) {
   const { data, setData, post, processing, errors } = useForm({
     nama_kelas: "",
   })
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault()
-    post("/kelas")
+    post("/kelas", {
+      onSuccess: () => {
+        onSuccessClose?.()
+      },
+    })
   }
 
   return (
@@ -128,12 +142,50 @@ function FormKelas({ className }: React.ComponentProps<"form">) {
   )
 }
 
-function FormSiswa({ className }: React.ComponentProps<"form">) {
+function FormSiswa({ className, piket, siswa, kelas }: React.ComponentProps<"form">) {
 
   const [show, setShow] = React.useState(false)
 
+  const {
+    data: dataJadwal,
+    setData: setDataJadwal,
+    post: postJadwal,
+    processing: processingJadwal,
+    errors: errorsJadwal,
+  } = useForm({
+    user_id: "",
+    nama_kelas: kelas,
+    hari_piket: piket,
+  })
+  const {
+      data: dataSiswa,
+      setData: setDataSiswa,
+      post: postSiswa,
+      processing: processingSiswa,
+      errors: errorsSiswa,
+    } = useForm({
+      name: "",
+      username: "",
+      password: "",
+    })
+
+  const submit = (e: React.FormEvent) => {
+    e.preventDefault()
+    show ? 
+    postSiswa('/addSiswa', {
+      onSuccess: () => {
+        onSuccessClose?.()
+      },
+    }):
+    postJadwal('/addJadwal', {
+        onSuccess: () => {
+          onSuccessClose?.()
+        },
+      })
+    }
+    console.log(kelas)
   return (
-    <form className={cn("grid items-start gap-6", className)}>
+    <form onSubmit={submit} className={cn("grid items-start gap-6", className)}>
       <AnimatePresence mode="wait">
         {show ? (
           <motion.div
@@ -155,13 +207,18 @@ function FormSiswa({ className }: React.ComponentProps<"form">) {
             </div>
 
             <div className="grid gap-3">
-              <Label htmlFor="email">Email</Label>
-              <Input id="email" />
+              <Label htmlFor="name">Nama Lengkap</Label>
+              <Input value={dataSiswa.name} onChange={(e)=>setDataSiswa('name', e.target.value)} id="name" />
             </div>
 
             <div className="grid gap-3">
               <Label htmlFor="username">Username</Label>
-              <Input id="username" />
+              <Input value={dataSiswa.username} onChange={(e)=>setDataSiswa('username', e.target.value)} id="username" />
+            </div>
+
+            <div className="grid gap-3">
+              <Label htmlFor="password">password</Label>
+              <Input value={dataSiswa.password} onChange={(e)=>setDataSiswa('password', e.target.value)} type="password" id="password" />
             </div>
           </motion.div>
         ) : (
@@ -174,16 +231,21 @@ function FormSiswa({ className }: React.ComponentProps<"form">) {
             className="overflow-hidden grid gap-3"
           >
             <Label>Nama</Label>
-            <Select>
+            <Select
+              value={dataJadwal.user_id}
+              onValueChange={(value) => setDataJadwal("user_id", value)}
+            >
               <SelectTrigger>
                 <SelectValue placeholder="Nama" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="Siswa1">Siswa1</SelectItem>
-                <SelectItem value="Siswa2">Siswa2</SelectItem>
+                {siswa.map((item) => (
+                  <SelectItem key={item.id} value={String(item.id)}>
+                    {item.name}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
-
             <div className="text-center text-sm">
               Tidak menemukan data siswa?{" "}
               <button
@@ -197,7 +259,14 @@ function FormSiswa({ className }: React.ComponentProps<"form">) {
           </motion.div>
         )}
       </AnimatePresence>
-      <Button type="submit">Save changes</Button>
+      <Button
+        disabled={show ? processingSiswa : processingJadwal}
+        type="submit"
+      >
+        {show
+          ? processingSiswa ? "Saving..." : "Save changes"
+          : processingJadwal ? "Saving..." : "Save changes"}
+      </Button>
     </form>
   )
 }

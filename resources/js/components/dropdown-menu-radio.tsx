@@ -30,7 +30,7 @@ export function DropdownMenuRadio({ kelas, onChange }: DropdownMenuRadioProps) {
           className={`bg-transparent transition-all hover:cursor-pointer hover:scale-105 text-lg ${
             kelasValue === "" && "text-slate-500"
           }`}
-          variant="none"
+          variant="ghost"
         >
           {!kelasValue ? "Klik Disini" : kelasValue}
         </Button>
@@ -41,7 +41,7 @@ export function DropdownMenuRadio({ kelas, onChange }: DropdownMenuRadioProps) {
         <DropdownMenuSeparator />
         <DropdownMenuRadioGroup value={kelasValue} onValueChange={handleChange}>
           {kelas.map(item=>(
-            <DropdownMenuRadioItem value={item.nama_kelas}>{item.nama_kelas}</DropdownMenuRadioItem>
+            <DropdownMenuRadioItem key={item.id} value={item.nama_kelas}>{item.nama_kelas}</DropdownMenuRadioItem>
             ))}
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>

@@ -47,7 +47,7 @@ export function MobileBottomNav() {
     {
       icon: Settings,
       label: "Pengaturan",
-      href: '/settings/',
+      href: '/settings/appearance',
     },
   ]
 

@@ -11,23 +11,23 @@ import { Link } from '@inertiajs/react';
 import { type PropsWithChildren } from 'react';
 
 const sidebarNavItems: NavItem[] = [
-    {
-        title: 'Profile',
-        href: edit(),
-        icon: null,
-    },
-    {
-        title: 'Password',
-        href: editPassword(),
-        icon: null,
-    },
+    // {
+    //     title: 'Profile',
+    //     href: edit(),
+    //     icon: null,
+    // },
+    // {
+    //     title: 'Password',
+    //     href: editPassword(),
+    //     icon: null,
+    // },
     // {
     //     title: 'Two-Factor Auth',
     //     href: show(),
     //     icon: null,
     // },
     {
-        title: 'Appearance',
+        title: 'Tema',
         href: editAppearance(),
         icon: null,
     },
@@ -49,7 +49,7 @@ export default function SettingsLayout({ children }: PropsWithChildren) {
             />
 
             <div className="flex flex-col lg:flex-row lg:space-x-12">
-                <aside className="w-full max-w-xl lg:w-48">
+                {/*<aside className="w-full max-w-xl lg:w-48">
                     <nav className="flex flex-col space-y-1 space-x-0">
                         {sidebarNavItems.map((item, index) => (
                             <Button
@@ -73,9 +73,9 @@ export default function SettingsLayout({ children }: PropsWithChildren) {
                             </Button>
                         ))}
                     </nav>
-                </aside>
+                </aside>*/}
 
-                <Separator className="my-6 lg:hidden" />
+                <Separator className="my-2 lg:hidden" />
 
                 <div className="flex-1 md:max-w-2xl">
                     <section className="max-w-xl space-y-12">
